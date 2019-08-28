@@ -1,5 +1,3 @@
-//структуры
-
 //Функция G2R2_POP_G2R2_TYPE		удаляет последний элемент из массива		Вернёт удалённый элемент массива
 //Функция G2R2_SHIFT_G2R2_TYPE		удаляет из массива первый элемент			Вернёт удалённый элемент массива
 //Они принимают:
@@ -25,10 +23,10 @@
 #define G2R2_simple_CAT(str1, str2)		str1 ## str2
 #define G2R2_CAT(str1, str2)			G2R2_simple_CAT(str1, str2)
 
-// тут будут хитрые_штуки^v, чтобы сымитироваать C++(сиплюсплюсные) шаблоны
+// тут будут хитрые_штуки^v, чтобы сымитироваать шаблоны из C++
 
 //POP
-G2R2_TYPE G2R2_CAT(G2R2_POP_, G2R2_TYPE)(G2R2_TYPE *arr, unsigned char *len)
+inline G2R2_TYPE G2R2_CAT(G2R2_POP_, G2R2_TYPE)(G2R2_TYPE *arr, unsigned char *len)
 {
 	G2R2_TYPE res = arr[--(*len)]; // запоминаем последний элемент и уменьшаем длину массива
 	arr[*len] = (G2R2_TYPE){ '\0' }; // стираем последний элемент
@@ -36,7 +34,7 @@ G2R2_TYPE G2R2_CAT(G2R2_POP_, G2R2_TYPE)(G2R2_TYPE *arr, unsigned char *len)
 }
 
 //SHIFT
-G2R2_TYPE G2R2_CAT(G2R2_SHIFT_, G2R2_TYPE)(G2R2_TYPE *arr, unsigned char *len)
+inline G2R2_TYPE G2R2_CAT(G2R2_SHIFT_, G2R2_TYPE)(G2R2_TYPE *arr, unsigned char *len)
 {
 	G2R2_TYPE res = arr[0]; // запоминаем первый элмент
 	for (unsigned char index = 0; index < *len - 1; ++index)
@@ -48,7 +46,7 @@ G2R2_TYPE G2R2_CAT(G2R2_SHIFT_, G2R2_TYPE)(G2R2_TYPE *arr, unsigned char *len)
 }
 
 //UNSHIFT
-void G2R2_CAT(G2R2_UNSHIFT_, G2R2_TYPE)(G2R2_TYPE *arr, unsigned char *len, G2R2_TYPE New)
+inline void G2R2_CAT(G2R2_UNSHIFT_, G2R2_TYPE)(G2R2_TYPE *arr, unsigned char *len, G2R2_TYPE New)
 {
 	// index - индекс того, на кого будем двигать
 	for (unsigned char index = *len; index; --index)
@@ -60,7 +58,7 @@ void G2R2_CAT(G2R2_UNSHIFT_, G2R2_TYPE)(G2R2_TYPE *arr, unsigned char *len, G2R2
 }
 
 //PUSH
-void G2R2_CAT(G2R2_PUSH_, G2R2_TYPE)(G2R2_TYPE *arr, unsigned char *len, G2R2_TYPE New)
+inline void G2R2_CAT(G2R2_PUSH_, G2R2_TYPE)(G2R2_TYPE *arr, unsigned char *len, G2R2_TYPE New)
 {
 	arr[(*len)++] = New; // вставляем новый элемент в конец массива и увеличиваем длину массива
 }
